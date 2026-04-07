@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import PageLoader from '@/components/ui/PageLoader';
+import { SITE } from '@/lib/config';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://thirdproofpizzeria.com';
 
@@ -63,19 +64,19 @@ export const metadata: Metadata = {
 const schemaOrg = {
   '@context': 'https://schema.org',
   '@type': 'Restaurant',
-  name: 'Third Proof Pizzeria',
+  name: SITE.name,
   description:
     'New Haven-style sourdough pizza restaurant in Pine Brook, NJ. Crisp charred crust, fresh ingredients, family-run atmosphere.',
   url: SITE_URL,
-  telephone: '+19732877220',
+  telephone: SITE.phone.e164,
   servesCuisine: 'New Haven-style Pizza',
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '263 Changebridge Rd.',
-    addressLocality: 'Pine Brook',
-    addressRegion: 'NJ',
-    postalCode: '07058',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.state,
+    postalCode: SITE.address.zip,
     addressCountry: 'US',
   },
   openingHoursSpecification: [
@@ -90,7 +91,7 @@ const schemaOrg = {
     bestRating: '5',
     ratingCount: '50',
   },
-  sameAs: ['https://www.instagram.com/thirdproof'],
+  sameAs: [SITE.instagram.url],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

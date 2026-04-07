@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ExternalLink } from 'lucide-react';
 import ToastEmbed from '@/components/ui/ToastEmbed';
+import { SITE } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Menu & Order Online',
@@ -8,8 +9,6 @@ export const metadata: Metadata = {
     'Browse the full Third Proof Pizzeria menu and order online. New Haven-style sourdough pies, including the signature New Haven pie, Mushroom & Onion, Vodka, and more.',
   alternates: { canonical: '/menu' },
 };
-
-const TOAST_URL = 'https://order.toasttab.com/online/thirdproofpizzeria';
 
 export default function MenuPage() {
   return (
@@ -39,7 +38,7 @@ export default function MenuPage() {
           New Haven-style sourdough pies, made fresh every service. Order online for pickup.
         </p>
         <a
-          href={TOAST_URL}
+          href={SITE.ordering.toastUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary"
@@ -51,7 +50,7 @@ export default function MenuPage() {
       </div>
 
       {/* Toast iframe embed */}
-      <ToastEmbed url={TOAST_URL} />
+      <ToastEmbed url={SITE.ordering.toastUrl} />
     </div>
   );
 }

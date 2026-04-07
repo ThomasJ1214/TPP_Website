@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Star, ExternalLink } from 'lucide-react';
 import type { Testimonial } from '@/types';
+import { SITE } from '@/lib/config';
 
 const testimonials: Testimonial[] = [
   {
@@ -97,7 +98,7 @@ export default function RatingSection() {
             </span>
             <span style={{ color: 'var(--color-brand-border)', fontSize: '1rem' }}>·</span>
             <a
-              href="https://maps.google.com/?q=Third+Proof+Pizzeria+Pine+Brook+NJ"
+              href={SITE.address.reviewsUrl}
               target="_blank"
               rel="noopener noreferrer"
               style={{

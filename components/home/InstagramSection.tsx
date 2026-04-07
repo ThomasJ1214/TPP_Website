@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import InstagramIcon from '@/components/ui/InstagramIcon';
+import { SITE } from '@/lib/config';
 
 // Placeholder grid — client will supply real food photos
 // 📸 IMAGES: /public/images/gallery/ig-*.jpg (600×600px each, food close-ups)
@@ -33,14 +34,14 @@ export default function InstagramSection() {
             </h2>
           </div>
           <a
-            href="https://www.instagram.com/thirdproof"
+            href={SITE.instagram.url}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-outline"
             style={{ flexShrink: 0 }}
           >
             <InstagramIcon size={16} />
-            @thirdproof
+            {SITE.instagram.handle}
             <ArrowRight size={14} />
           </a>
         </div>
@@ -62,7 +63,7 @@ export default function InstagramSection() {
           {Array.from({ length: GRID_COUNT }).map((_, i) => (
             <a
               key={i}
-              href="https://www.instagram.com/thirdproof"
+              href={SITE.instagram.url}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View photo ${i + 1} on Instagram`}
@@ -114,7 +115,7 @@ export default function InstagramSection() {
 
         <div style={{ textAlign: 'center', marginTop: '1.75rem' }}>
           <a
-            href="https://www.instagram.com/thirdproof"
+            href={SITE.instagram.url}
             target="_blank"
             rel="noopener noreferrer"
             style={{

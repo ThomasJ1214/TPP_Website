@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Phone } from 'lucide-react';
 import { HOURS_DISPLAY } from '@/lib/hours';
 import OpenStatusBadge from '@/components/ui/OpenStatusBadge';
+import { SITE } from '@/lib/config';
 
 export default function HoursSection() {
   return (
@@ -125,13 +126,13 @@ export default function HoursSection() {
                     Find us here
                   </div>
                   <a
-                    href="https://maps.google.com/?q=263+Changebridge+Rd+Pine+Brook+NJ+07058"
+                    href={SITE.address.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ fontSize: '0.9375rem', color: 'var(--color-brand-blue)', textDecoration: 'none', lineHeight: 1.5 }}
                   >
-                    263 Changebridge Rd.<br />
-                    Pine Brook, NJ 07058
+                    {SITE.address.street}<br />
+                    {SITE.address.city}, {SITE.address.state} {SITE.address.zip}
                   </a>
                   <div style={{ marginTop: '0.5rem', fontSize: '0.8125rem', color: 'var(--color-brand-muted)' }}>
                     Plenty of parking available
@@ -161,10 +162,10 @@ export default function HoursSection() {
                     Give us a call
                   </div>
                   <a
-                    href="tel:+19732877220"
+                    href={SITE.phone.href}
                     style={{ fontSize: '1.0625rem', color: 'var(--color-brand-blue)', textDecoration: 'none', fontWeight: 600 }}
                   >
-                    (973) 287-7220
+                    {SITE.phone.display}
                   </a>
                 </div>
               </div>

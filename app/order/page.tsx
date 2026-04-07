@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ExternalLink, Phone } from 'lucide-react';
 import ToastEmbed from '@/components/ui/ToastEmbed';
+import { SITE } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Order Online',
@@ -8,8 +9,6 @@ export const metadata: Metadata = {
     'Order Third Proof Pizzeria online for pickup via Toast. New Haven-style sourdough pizza in Pine Brook, NJ. Open Wed–Sat, 11 AM–8 PM.',
   alternates: { canonical: '/order' },
 };
-
-const TOAST_URL = 'https://order.toasttab.com/online/thirdproofpizzeria';
 
 export default function OrderPage() {
   return (
@@ -57,7 +56,7 @@ export default function OrderPage() {
         </p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center', alignItems: 'center' }}>
           <a
-            href={TOAST_URL}
+            href={SITE.ordering.toastUrl}
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -77,15 +76,15 @@ export default function OrderPage() {
             Open in new tab
             <ExternalLink size={14} />
           </a>
-          <a href="tel:+19732877220" className="btn-outline-white" style={{ padding: '0.75rem 1.5rem', fontSize: '0.9375rem' }}>
+          <a href={SITE.phone.href} className="btn-outline-white" style={{ padding: '0.75rem 1.5rem', fontSize: '0.9375rem' }}>
             <Phone size={14} />
-            (973) 287-7220
+            {SITE.phone.display}
           </a>
         </div>
       </div>
 
       {/* Toast iframe embed */}
-      <ToastEmbed url={TOAST_URL} />
+      <ToastEmbed url={SITE.ordering.toastUrl} />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { MapPin, Phone, Clock, ExternalLink } from 'lucide-react';
 import InstagramIcon from '@/components/ui/InstagramIcon';
 import { HOURS_DISPLAY } from '@/lib/hours';
 import OpenStatusBadge from '@/components/ui/OpenStatusBadge';
+import { SITE } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Contact & Location',
@@ -80,7 +81,7 @@ export default function ContactPage() {
                   Address
                 </h2>
                 <a
-                  href="https://maps.google.com/?q=263+Changebridge+Rd+Pine+Brook+NJ+07058"
+                  href={SITE.address.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -93,7 +94,7 @@ export default function ContactPage() {
                     gap: '0.3rem',
                   }}
                 >
-                  <span>263 Changebridge Rd., Pine Brook, NJ 07058</span>
+                  <span>{SITE.address.oneLine}</span>
                   <ExternalLink size={12} style={{ marginTop: '3px', flexShrink: 0 }} />
                 </a>
                 <p style={{ marginTop: '0.375rem', fontSize: '0.8125rem', color: 'var(--color-brand-muted)' }}>
@@ -133,7 +134,7 @@ export default function ContactPage() {
                   Phone
                 </h2>
                 <a
-                  href="tel:+19732877220"
+                  href={SITE.phone.href}
                   style={{
                     fontSize: '1.125rem',
                     color: 'var(--color-brand-blue)',
@@ -141,7 +142,7 @@ export default function ContactPage() {
                     fontWeight: 700,
                   }}
                 >
-                  (973) 287-7220
+                  {SITE.phone.display}
                 </a>
               </div>
             </div>
@@ -240,12 +241,12 @@ export default function ContactPage() {
                   Instagram
                 </div>
                 <a
-                  href="https://www.instagram.com/thirdproof"
+                  href={SITE.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ fontSize: '0.9375rem', color: 'var(--color-brand-blue)', textDecoration: 'none' }}
                 >
-                  @thirdproof
+                  {SITE.instagram.handle}
                 </a>
               </div>
             </div>
@@ -277,7 +278,7 @@ export default function ContactPage() {
           </div>
           <div style={{ marginTop: '0.875rem', textAlign: 'center' }}>
             <a
-              href="https://maps.google.com/?q=263+Changebridge+Rd+Pine+Brook+NJ+07058"
+              href={SITE.address.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               style={{

@@ -2,8 +2,7 @@ import Link from 'next/link';
 import { MapPin, Phone, Clock, ExternalLink } from 'lucide-react';
 import OpenStatusBadge from '@/components/ui/OpenStatusBadge';
 import InstagramIcon from '@/components/ui/InstagramIcon';
-
-const TOAST_URL = 'https://order.toasttab.com/online/thirdproofpizzeria';
+import { SITE } from '@/lib/config';
 
 export default function Footer() {
   return (
@@ -88,21 +87,21 @@ export default function Footer() {
               <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem' }}>
                 <MapPin size={15} style={{ color: 'var(--color-brand-blue-light)', marginTop: '0.15rem', flexShrink: 0 }} />
                 <a
-                  href="https://maps.google.com/?q=263+Changebridge+Rd+Pine+Brook+NJ+07058"
+                  href={SITE.address.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.8)', textDecoration: 'none', lineHeight: 1.5 }}
                 >
-                  263 Changebridge Rd.<br />Pine Brook, NJ 07058
+                  {SITE.address.street}<br />{SITE.address.city}, {SITE.address.state} {SITE.address.zip}
                 </a>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
                 <Phone size={15} style={{ color: 'var(--color-brand-blue-light)', flexShrink: 0 }} />
                 <a
-                  href="tel:+19732877220"
+                  href={SITE.phone.href}
                   style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}
                 >
-                  (973) 287-7220
+                  {SITE.phone.display}
                 </a>
               </li>
             </ul>
@@ -126,8 +125,8 @@ export default function Footer() {
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem' }}>
               <Clock size={15} style={{ color: 'var(--color-brand-blue-light)', marginTop: '0.15rem', flexShrink: 0 }} />
               <div style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.6 }}>
-                <div>Wednesday – Saturday</div>
-                <div>11:00 AM – 8:00 PM</div>
+                <div>{SITE.hours.days}</div>
+                <div>{SITE.hours.time}</div>
                 <div style={{ color: 'rgba(255,255,255,0.45)', marginTop: '0.25rem' }}>
                   Closed Sun · Mon · Tue
                 </div>
@@ -175,7 +174,7 @@ export default function Footer() {
               ))}
               <li>
                 <a
-                  href={TOAST_URL}
+                  href={SITE.ordering.toastUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -195,7 +194,7 @@ export default function Footer() {
             {/* Instagram */}
             <div style={{ marginTop: '1.5rem' }}>
               <a
-                href="https://www.instagram.com/thirdproof"
+                href={SITE.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -212,7 +211,7 @@ export default function Footer() {
                 }}
               >
                 <InstagramIcon size={15} />
-                @thirdproof
+                {SITE.instagram.handle}
               </a>
             </div>
           </div>
