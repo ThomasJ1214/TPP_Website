@@ -3,10 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ExternalLink } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import OpenStatusBadge from '@/components/ui/OpenStatusBadge';
-
-const TOAST_URL = 'https://order.toasttab.com/online/thirdproofpizzeria';
 
 const navLinks = [
   { href: '/menu', label: 'Menu' },
@@ -101,16 +99,13 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden md:block">
-              <a
-                href={TOAST_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/order"
                 className="btn-primary"
                 style={{ padding: '0.5625rem 1.25rem', fontSize: '0.875rem' }}
               >
                 Order Online
-                <ExternalLink size={14} />
-              </a>
+              </Link>
             </div>
 
             {/* Mobile hamburger */}
@@ -225,17 +220,14 @@ export default function Navbar() {
 
               {/* CTA */}
               <div className="mt-auto pt-8">
-                <a
-                  href={TOAST_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/order"
                   className="btn-primary"
                   style={{ width: '100%', justifyContent: 'center' }}
                   onClick={() => setMobileOpen(false)}
                 >
                   Order Online
-                  <ExternalLink size={14} />
-                </a>
+                </Link>
                 <p
                   style={{
                     marginTop: '1rem',

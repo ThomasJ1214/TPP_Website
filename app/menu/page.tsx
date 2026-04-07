@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { ExternalLink } from 'lucide-react';
-import ToastEmbed from './ToastEmbed';
+import ToastEmbed from '@/components/ui/ToastEmbed';
 
 export const metadata: Metadata = {
   title: 'Menu & Order Online',

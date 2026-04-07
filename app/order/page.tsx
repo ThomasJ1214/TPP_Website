@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { ExternalLink, Clock, Phone } from 'lucide-react';
+import { ExternalLink, Phone } from 'lucide-react';
+import ToastEmbed from '@/components/ui/ToastEmbed';
 
 export const metadata: Metadata = {
   title: 'Order Online',
@@ -18,7 +19,7 @@ export default function OrderPage() {
         style={{
           backgroundColor: 'var(--color-brand-blue)',
           color: '#ffffff',
-          padding: '3rem 1.25rem',
+          padding: '2.5rem 1.25rem 2rem',
           textAlign: 'center',
           position: 'relative',
           overflow: 'hidden',
@@ -32,29 +33,29 @@ export default function OrderPage() {
             fontSize: '1.0625rem',
             color: 'var(--color-brand-blue-light)',
             display: 'block',
-            marginBottom: '0.5rem',
+            marginBottom: '0.375rem',
           }}
         >
           Skip the wait
         </span>
         <h1
           className="section-title-white"
-          style={{ marginBottom: '0.875rem' }}
+          style={{ marginBottom: '0.75rem' }}
         >
           Order Online
         </h1>
         <p
           style={{
-            fontSize: '1.0625rem',
+            fontSize: '1rem',
             color: 'rgba(255,255,255,0.78)',
             maxWidth: '440px',
-            margin: '0 auto 1.75rem',
+            margin: '0 auto 1.5rem',
             lineHeight: 1.6,
           }}
         >
-          Secure your pie before you arrive — especially on busy Friday evenings when wait times can hit an hour.
+          Secure your pie before you arrive — especially on busy Friday evenings.
         </p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center', alignItems: 'center' }}>
           <a
             href={TOAST_URL}
             target="_blank"
@@ -63,92 +64,28 @@ export default function OrderPage() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.5rem',
-              padding: '1rem 2.25rem',
+              padding: '0.75rem 1.75rem',
               backgroundColor: '#ffffff',
               color: 'var(--color-brand-blue)',
               fontWeight: 700,
-              fontSize: '1rem',
+              fontSize: '0.9375rem',
               fontFamily: 'var(--font-body)',
               borderRadius: '0.5rem',
               textDecoration: 'none',
             }}
           >
-            Start Your Order
-            <ExternalLink size={16} />
+            Open in new tab
+            <ExternalLink size={14} />
           </a>
-          <a
-            href="tel:+19732877220"
-            className="btn-outline-white"
-          >
-            <Phone size={15} />
-            Call (973) 287-7220
+          <a href="tel:+19732877220" className="btn-outline-white" style={{ padding: '0.75rem 1.5rem', fontSize: '0.9375rem' }}>
+            <Phone size={14} />
+            (973) 287-7220
           </a>
         </div>
       </div>
 
-      {/* Info cards */}
-      <div
-        style={{
-          maxWidth: '72rem',
-          margin: '0 auto',
-          padding: '3rem 1.25rem',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-          gap: '1.25rem',
-        }}
-      >
-        {[
-          {
-            icon: ExternalLink,
-            title: 'Order via Toast',
-            body: 'Our online ordering is powered by Toast. Browse the full menu, choose your pies and toppings, and select a pickup time.',
-          },
-          {
-            icon: Clock,
-            title: 'Open Wed–Sat',
-            body: 'We\'re open Wednesday through Saturday, 11 AM–8 PM Eastern time. Orders can be placed during open hours.',
-          },
-          {
-            icon: Phone,
-            title: 'Prefer to call?',
-            body: 'Happy to take your order over the phone. Give us a call at (973) 287-7220 during business hours.',
-          },
-        ].map((card) => {
-          const Icon = card.icon;
-          return (
-            <div key={card.title} className="card" style={{ padding: '1.5rem' }}>
-              <div
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
-                  backgroundColor: 'var(--color-brand-blue-light)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '1rem',
-                }}
-              >
-                <Icon size={18} style={{ color: 'var(--color-brand-blue)' }} />
-              </div>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 700,
-                  fontSize: '1.0625rem',
-                  color: 'var(--color-brand-text)',
-                  marginBottom: '0.5rem',
-                }}
-              >
-                {card.title}
-              </h2>
-              <p style={{ fontSize: '0.9375rem', color: 'var(--color-brand-muted)', lineHeight: 1.6, margin: 0 }}>
-                {card.body}
-              </p>
-            </div>
-          );
-        })}
-      </div>
+      {/* Toast iframe embed */}
+      <ToastEmbed url={TOAST_URL} />
     </div>
   );
 }

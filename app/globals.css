@@ -218,3 +218,9 @@ body {
   color: #F59E0B;
   fill: #F59E0B;
 }
+
+/* ─── Page Loader ─── */
+@keyframes loader-grow {
+  0%, 100% { transform: scaleX(0.25); opacity: 0.45; }
+  50%       { transform: scaleX(1);    opacity: 1; }
+}
