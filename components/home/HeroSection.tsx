@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ExternalLink } from 'lucide-react';
@@ -8,6 +8,9 @@ import { ArrowRight, ExternalLink } from 'lucide-react';
 const TOAST_URL = 'https://order.toasttab.com/online/thirdproofpizzeria';
 
 export default function HeroSection() {
+  const { scrollY } = useScroll();
+  const imageY = useTransform(scrollY, [0, 600], ['0%', '18%']);
+
   return (
     <section
       style={{
@@ -20,16 +23,24 @@ export default function HeroSection() {
       }}
       aria-label="Hero"
     >
-      {/* Background image */}
-      <Image
-        src="/images/hero/hero-main.jpg"
-        alt=""
-        fill
-        className="object-cover"
-        priority
-        quality={90}
-        style={{ objectPosition: 'center' }}
-      />
+      {/* Background image with parallax */}
+      <motion.div
+        style={{
+          position: 'absolute',
+          inset: '-15% 0',
+          y: imageY,
+        }}
+      >
+        <Image
+          src="/images/hero/hero-main.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+          style={{ objectPosition: 'center' }}
+        />
+      </motion.div>
 
       {/* Gradient overlay for text legibility (when real photo is added) */}
       <div
