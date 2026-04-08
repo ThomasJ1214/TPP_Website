@@ -237,6 +237,15 @@ body {
   fill: #F59E0B;
 }
 
+/* ─── Page transition ─── */
+@keyframes page-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-transition {
+  animation: page-fade-up 0.28s ease-out both;
+}
+
 /* ─── Page Loader ─── */
 @keyframes loader-grow {
   0%, 100% { transform: scaleX(0.25); opacity: 0.45; }
