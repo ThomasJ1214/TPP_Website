@@ -157,35 +157,8 @@ export default function MenuPage() {
                   <div
                     key={item.name}
                     className="card"
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      opacity: item.soldOut ? 0.6 : 1,
-                      position: 'relative',
-                    }}
+                    style={{ display: 'flex', flexDirection: 'column' }}
                   >
-                    {/* Sold-out ribbon */}
-                    {item.soldOut && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: '0.75rem',
-                          right: '0.75rem',
-                          zIndex: 2,
-                          backgroundColor: 'var(--color-brand-text)',
-                          color: '#ffffff',
-                          fontSize: '0.6875rem',
-                          fontWeight: 700,
-                          letterSpacing: '0.08em',
-                          textTransform: 'uppercase',
-                          padding: '0.25rem 0.625rem',
-                          borderRadius: '2rem',
-                        }}
-                      >
-                        Sold Out
-                      </div>
-                    )}
-
                     {/* Optional photo */}
                     {item.image && (
                       <div style={{ position: 'relative', aspectRatio: '3/2', overflow: 'hidden' }}>

@@ -84,7 +84,6 @@ export const MENU: MenuSection[] = [
         name: 'Mushroom & Onion',
         description: 'Fresh, whole milk & part skim mozzarella. Caramelized onions, thyme. No sauce. Finished with parm.',
         price: '$25',
-        soldOut: true,
         // image: '/images/menu/mushroom-onion.jpg',
       },
     ],
