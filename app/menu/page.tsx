@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { ExternalLink } from 'lucide-react';
 import ToastEmbed from '@/components/ui/ToastEmbed';
 import { SITE } from '@/lib/config';
 
@@ -31,22 +30,12 @@ export default function MenuPage() {
             fontSize: '1rem',
             color: 'var(--color-brand-muted)',
             maxWidth: '420px',
-            margin: '0 auto 1.25rem',
+            margin: '0 auto',
             lineHeight: 1.6,
           }}
         >
           New Haven-style sourdough pies, made fresh every service. Order online for pickup.
         </p>
-        <a
-          href={SITE.ordering.toastUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-primary"
-          style={{ display: 'inline-flex' }}
-        >
-          Open full menu in new tab
-          <ExternalLink size={15} />
-        </a>
       </div>
 
       {/* Toast iframe embed */}
