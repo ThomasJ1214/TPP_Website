@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 
@@ -20,30 +21,14 @@ export default function HeroSection() {
       aria-label="Hero"
     >
       {/* Background image */}
-      {/* 📸 IMAGE: /public/images/hero/hero-main.jpg
-          Dimensions: 1920×1080px (or taller for mobile)
-          Crop: Overhead or 45° shot of a whole New Haven pie with charred crust
-          Replace the gradient placeholder below with:
-          <Image src="/images/hero/hero-main.jpg" alt="" fill className="object-cover" priority quality={90} />
-      */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(135deg, #1A1209 0%, #2D1F10 40%, #1E2D4A 100%)',
-        }}
-      />
-
-      {/* Decorative texture overlay */}
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `radial-gradient(circle at 20% 60%, rgba(29,78,216,0.12) 0%, transparent 60%),
-                            radial-gradient(circle at 80% 30%, rgba(245,158,11,0.06) 0%, transparent 50%)`,
-        }}
+      <Image
+        src="/images/hero/hero-main.jpg"
+        alt=""
+        fill
+        className="object-cover"
+        priority
+        quality={90}
+        style={{ objectPosition: 'center' }}
       />
 
       {/* Gradient overlay for text legibility (when real photo is added) */}
