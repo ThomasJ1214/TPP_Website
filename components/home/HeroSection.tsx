@@ -1,15 +1,12 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, ExternalLink } from 'lucide-react';
-
-const TOAST_URL = 'https://order.toasttab.com/online/thirdproofpizzeria';
+import HeroParallaxCanvas from './HeroParallaxCanvas';
+import { SITE } from '@/lib/config';
 
 export default function HeroSection() {
-  const { scrollY } = useScroll();
-  const imageY = useTransform(scrollY, [0, 600], ['0%', '18%']);
 
   return (
     <section
@@ -23,24 +20,11 @@ export default function HeroSection() {
       }}
       aria-label="Hero"
     >
-      {/* Background image with parallax */}
-      <motion.div
-        style={{
-          position: 'absolute',
-          inset: '-15% 0',
-          y: imageY,
-        }}
-      >
-        <Image
-          src="/images/hero/hero-main.jpg"
-          alt=""
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-          style={{ objectPosition: 'center' }}
-        />
-      </motion.div>
+      {/* WebGL depth-map parallax canvas */}
+      <HeroParallaxCanvas
+        photo="/images/hero/hero-main.jpg"
+        depth="/images/hero/hero-depth.jpg"
+      />
 
       {/* Gradient overlay for text legibility (when real photo is added) */}
       <div
@@ -109,7 +93,7 @@ export default function HeroSection() {
             transition={{ duration: 0.55, delay: 0.3 }}
           >
             <a
-              href={TOAST_URL}
+              href={SITE.ordering.toastUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
