@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import PageLoader from '@/components/ui/PageLoader';
 import SmoothScroll from '@/components/ui/SmoothScroll';
+import NewsletterPopup from '@/components/ui/NewsletterPopup';
 import { SITE } from '@/lib/config';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://thirdproofpizzeria.com';
@@ -114,6 +115,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col antialiased">
         <SmoothScroll />
         <PageLoader />
+        <NewsletterPopup />
         <Navbar />
         <main className="flex-1 pt-[72px]">{children}</main>
         <Footer />
