@@ -72,7 +72,7 @@ export default function InstagramSection() {
                 aspectRatio: '1',
                 position: 'relative',
                 overflow: 'hidden',
-                backgroundColor: i % 3 === 0 ? '#2D1F10' : i % 3 === 1 ? '#1E3A8A' : '#3D2E1E',
+                backgroundColor: i % 3 === 0 ? '#2D1F10' : i % 3 === 1 ? '#172D6E' : '#3D2E1E',
               }}
             >
               {/*

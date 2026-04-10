@@ -8,7 +8,7 @@ const highlights = [
     icon: Flame,
     title: 'The New Haven Difference',
     body: 'Our sourdough crust is fermented, stretched thin, and fired until it blisters with that signature char. Lighter than flour-based dough — never heavy, always craveable.',
-    accent: '#1D4ED8',
+    accent: '#1E40AF',
   },
   {
     icon: Leaf,

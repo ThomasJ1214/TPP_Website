@@ -3,8 +3,8 @@
 /* ─── Brand Design Tokens ─── */
 @theme {
   /* Colors */
-  --color-brand-blue: #1D4ED8;
-  --color-brand-blue-dark: #1E3A8A;
+  --color-brand-blue: #1E40AF;
+  --color-brand-blue-dark: #172D6E;
   --color-brand-blue-light: #DBEAFE;
   --color-brand-cream: #FAF7F2;
   --color-brand-warm: #F0EAE0;
@@ -58,7 +58,7 @@ body {
 }
 .btn-primary:hover {
   background-color: var(--color-brand-blue-dark);
-  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35);
+  box-shadow: 0 4px 14px rgba(30, 64, 175, 0.35);
   transform: translateY(-1px);
 }
 .btn-primary:active {
