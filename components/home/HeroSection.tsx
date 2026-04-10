@@ -1,12 +1,14 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ExternalLink } from 'lucide-react';
-import HeroParallaxCanvas from './HeroParallaxCanvas';
 import { SITE } from '@/lib/config';
 
 export default function HeroSection() {
+  const { scrollY } = useScroll();
+  const imageY = useTransform(scrollY, [0, 600], ['0%', '18%']);
 
   return (
     <section
@@ -20,11 +22,24 @@ export default function HeroSection() {
       }}
       aria-label="Hero"
     >
-      {/* WebGL depth-map parallax canvas */}
-      <HeroParallaxCanvas
-        photo="/images/hero/hero-main.jpg"
-        depth="/images/hero/hero-depth.jpg"
-      />
+      {/* Background image with parallax */}
+      <motion.div
+        style={{
+          position: 'absolute',
+          inset: '-15% 0',
+          y: imageY,
+        }}
+      >
+        <Image
+          src="/images/hero/hero-main.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+          style={{ objectPosition: 'center' }}
+        />
+      </motion.div>
 
       {/* Gradient overlay for text legibility (when real photo is added) */}
       <div
