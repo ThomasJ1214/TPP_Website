@@ -85,7 +85,7 @@ export default function NewsletterPopup() {
             aria-hidden
             style={{
               height: '3px',
-              background: 'linear-gradient(90deg, var(--color-brand-blue-dark), var(--color-brand-blue) 60%, #5B8EF0)',
+              background: 'linear-gradient(90deg, var(--color-brand-blue-dark), var(--color-brand-blue))',
             }}
           />
 
@@ -171,7 +171,7 @@ export default function NewsletterPopup() {
                     width: '38px',
                     height: '38px',
                     borderRadius: '10px',
-                    background: 'linear-gradient(135deg, var(--color-brand-blue-light), #EEF4FF)',
+                    backgroundColor: 'var(--color-brand-blue-light)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
