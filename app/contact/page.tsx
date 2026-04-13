@@ -208,13 +208,13 @@ export default function ContactPage() {
               style={{
                 marginTop: '1rem',
                 padding: '0.75rem',
-                backgroundColor: '#FEF3C7',
+                backgroundColor: 'var(--color-brand-blue-light)',
                 borderRadius: '0.5rem',
                 fontSize: '0.8125rem',
-                color: '#92400E',
+                color: 'var(--color-brand-blue-dark)',
               }}
             >
-              Tip: Friday evenings get busy. Order ahead online!
+              Friday evenings get busy. Order ahead online to skip the wait.
             </div>
           </div>
 

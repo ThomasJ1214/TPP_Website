@@ -158,7 +158,7 @@ export default function NewsletterPopup() {
                   You&apos;re on the list!
                 </p>
                 <p style={{ fontSize: '0.8125rem', color: 'var(--color-brand-muted)', margin: 0, lineHeight: 1.5 }}>
-                  Specials, new pies, and kitchen news — headed your way.
+                  Specials, new pies, and kitchen updates on the way.
                 </p>
               </motion.div>
 
@@ -191,7 +191,7 @@ export default function NewsletterPopup() {
                       Fresh from the kitchen
                     </p>
                     <p style={{ fontSize: '0.8125rem', color: 'var(--color-brand-muted)', margin: 0, lineHeight: 1.5 }}>
-                      New pies, seasonal specials, and the occasional exciting announcement.
+                      New pies, seasonal specials, and the occasional exciting news. One email at a time.
                     </p>
                   </div>
                 </div>

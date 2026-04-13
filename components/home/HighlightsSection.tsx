@@ -7,19 +7,19 @@ const highlights = [
   {
     icon: Flame,
     title: 'The New Haven Difference',
-    body: 'Our sourdough crust is fermented, stretched thin, and fired until it blisters with that signature char. Lighter than flour-based dough — never heavy, always craveable.',
+    body: 'Our sourdough crust is fermented, hand-stretched, and fired until it blisters with that signature char. Lighter than regular dough, and honestly more satisfying.',
     accent: '#1E40AF',
   },
   {
     icon: Leaf,
     title: 'Fresh Every Day',
-    body: 'Fresh-shaved Parmigiano on every pie. Sauce made from hand-crushed tomatoes. Every ingredient chosen with care. No shortcuts — because you deserve real pizza.',
+    body: 'Fresh-shaved Parmigiano on every pie. Sauce from hand-crushed tomatoes. Every ingredient chosen with care. No shortcuts, no compromises.',
     accent: '#059669',
   },
   {
     icon: Heart,
     title: 'Family Run, Community Loved',
-    body: 'Third Proof is owner-operated and genuinely welcoming. Regulars know the faces. Newcomers feel at home. It\'s the kind of place where good food brings people together.',
+    body: 'Third Proof is owner-operated and genuinely warm. Regulars feel like family. Newcomers feel it too. Good pizza, good people.',
     accent: '#DC2626',
   },
 ];
@@ -45,7 +45,7 @@ export default function HighlightsSection() {
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <span className="section-label">Why Third Proof</span>
           <h2 className="section-title" id="highlights-heading">
-            Pizza worth the drive.
+            One thing, done right.
           </h2>
           <p
             style={{
@@ -58,7 +58,7 @@ export default function HighlightsSection() {
               lineHeight: 1.65,
             }}
           >
-            We do one thing and we do it obsessively well — New Haven-style pizza that earns every five-star review.
+            New Haven style pizza that keeps people coming back. Made fresh, every service.
           </p>
         </div>
 
@@ -80,7 +80,10 @@ export default function HighlightsSection() {
                 key={h.title}
                 variants={cardVariants}
                 className="card"
-                style={{ padding: '2rem' }}
+                style={{
+                  padding: '2rem',
+                  borderLeft: `3px solid ${h.accent}`,
+                }}
               >
                 <div
                   style={{

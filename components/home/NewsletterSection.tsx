@@ -50,7 +50,7 @@ export default function NewsletterSection() {
               marginBottom: '2rem',
             }}
           >
-            Be first to hear about new pies, seasonal specials, and the occasional exciting announcement from the kitchen.
+            New pies, seasonal specials, and the occasional exciting news from the kitchen. Be the first to know.
           </p>
 
           <NewsletterForm />

@@ -1,9 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Clock } from 'lucide-react';
-
-const TOAST_URL = 'https://order.toasttab.com/online/thirdproofpizzeria';
+import { ExternalLink, Clock, Phone } from 'lucide-react';
+import { SITE } from '@/lib/config';
 
 export default function OrderCTASection() {
   return (
@@ -50,7 +49,7 @@ export default function OrderCTASection() {
               className="section-title-white"
               style={{ marginBottom: '0.75rem' }}
             >
-              Order ahead &amp; skip the wait.
+              Order ahead. Skip the wait.
             </h2>
             <div
               style={{
@@ -62,13 +61,13 @@ export default function OrderCTASection() {
               }}
             >
               <Clock size={15} />
-              <span>Friday evenings get busy — ordering ahead keeps your pie on time.</span>
+              <span>Friday evenings get busy. Order ahead and your pie will be ready when you get here.</span>
             </div>
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
             <a
-              href={TOAST_URL}
+              href={SITE.ordering.toastUrl}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -94,7 +93,7 @@ export default function OrderCTASection() {
               <ExternalLink size={16} />
             </a>
             <a
-              href="tel:+19732877220"
+              href={SITE.phone.href}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -110,7 +109,10 @@ export default function OrderCTASection() {
                 textDecoration: 'none',
                 transition: 'border-color 150ms ease',
               }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.9)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.5)'; }}
             >
+              <Phone size={15} />
               Call Us
             </a>
           </div>

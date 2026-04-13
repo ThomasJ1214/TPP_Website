@@ -30,7 +30,7 @@ export default function InstagramSection() {
           <div>
             <span className="section-label">Follow Along</span>
             <h2 className="section-title" id="instagram-heading">
-              Fresh from the kitchen.
+              See it before you taste it.
             </h2>
           </div>
           <a
@@ -99,13 +99,13 @@ export default function InstagramSection() {
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  backgroundColor: 'rgba(29,78,216,0)',
+                  backgroundColor: 'rgba(30,64,175,0)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   transition: 'background-color 200ms ease',
                 }}
-                className="hover:!bg-[rgba(29,78,216,0.4)] group"
+                className="hover:!bg-[rgba(30,64,175,0.4)] group"
               >
                 <InstagramIcon size={24} style={{ color: 'rgba(255,255,255,0)', transition: 'color 200ms ease' }} className="group-hover:!text-white" />
               </div>

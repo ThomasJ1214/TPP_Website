@@ -68,7 +68,7 @@ export default function RatingSection() {
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <span className="section-label">What People Are Saying</span>
           <h2 className="section-title" id="reviews-heading">
-            Loved by pizza lovers.
+            People love it here.
           </h2>
 
           {/* Aggregate rating */}
@@ -137,18 +137,35 @@ export default function RatingSection() {
               style={{ padding: '1.5rem' }}
             >
               <StarRating rating={t.rating} />
-              <p
-                style={{
-                  marginTop: '0.875rem',
-                  marginBottom: '1.125rem',
-                  fontSize: '0.9375rem',
-                  color: 'var(--color-brand-text)',
-                  lineHeight: 1.65,
-                  fontStyle: 'italic',
-                }}
-              >
-                &ldquo;{t.text}&rdquo;
-              </p>
+              <div style={{ position: 'relative', paddingTop: '1.5rem', marginBottom: '1.125rem' }}>
+                <span
+                  aria-hidden
+                  style={{
+                    position: 'absolute',
+                    top: '-0.125rem',
+                    left: '-0.25rem',
+                    fontFamily: 'Georgia, serif',
+                    fontSize: '3rem',
+                    lineHeight: 1,
+                    color: 'var(--color-brand-border)',
+                    userSelect: 'none',
+                    pointerEvents: 'none',
+                  }}
+                >
+                  &ldquo;
+                </span>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: '0.9375rem',
+                    color: 'var(--color-brand-text)',
+                    lineHeight: 1.65,
+                    fontStyle: 'italic',
+                  }}
+                >
+                  {t.text}
+                </p>
+              </div>
               <div
                 style={{
                   display: 'flex',

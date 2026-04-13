@@ -174,15 +174,15 @@ export default function HoursSection() {
             <div
               style={{
                 padding: '1.125rem 1.25rem',
-                backgroundColor: '#FEF3C7',
-                border: '1px solid #FCD34D',
+                backgroundColor: 'var(--color-brand-blue-light)',
+                border: '1px solid rgba(30,64,175,0.18)',
                 borderRadius: '0.75rem',
                 fontSize: '0.875rem',
-                color: '#92400E',
+                color: 'var(--color-brand-blue-dark)',
                 lineHeight: 1.6,
               }}
             >
-              <strong>Friday evenings tip:</strong> Wait for a fresh pie can be around an hour on busy nights. Order ahead online to guarantee your pickup time!
+              <strong>Friday tip:</strong> Evenings get busy and waits can stretch an hour. Order ahead online to skip the line.
             </div>
           </motion.div>
         </div>

@@ -51,7 +51,7 @@ export default function OrderPage() {
             lineHeight: 1.65,
           }}
         >
-          Order ahead for pickup through Toast — especially on Friday evenings when wait times can run an hour.
+          Order ahead through Toast. Friday evenings can get busy, so placing your order online means your pie is ready when you walk in.
         </p>
 
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -99,12 +99,12 @@ export default function OrderPage() {
           {
             Icon: ExternalLink,
             title: 'Powered by Toast',
-            body: 'Our ordering runs on Toast. Browse the menu, pick your pies, and choose a pickup time — all in a few taps.',
+            body: 'Our ordering runs on Toast. Browse the menu, pick your pies, and set a pickup time in just a few taps.',
           },
           {
             Icon: Clock,
             title: `Open ${SITE.hours.days.split(' – ')[0]}–${SITE.hours.days.split(' – ')[1]}`,
-            body: `We're open ${SITE.hours.days}, ${SITE.hours.time} ET. Orders can be placed any time during open hours.`,
+            body: `We're open ${SITE.hours.days}, ${SITE.hours.time} ET. Place your order any time we're open.`,
           },
           {
             Icon: MapPin,

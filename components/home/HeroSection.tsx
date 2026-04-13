@@ -97,8 +97,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.2 }}
           >
-            Crisp, charred sourdough crust. Sauce that&apos;s slightly sweet and perfectly balanced.
-            Fresh-shaved Parm on every slice. A family-run spot where every pie is made with love.
+            Crisp, charred sourdough crust. A sauce that hits just right. Fresh Parm shaved on every slice. Family-run and proud of it.
           </motion.p>
 
           <motion.div

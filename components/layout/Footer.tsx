@@ -50,7 +50,7 @@ export default function Footer() {
                   marginTop: '0.25rem',
                 }}
               >
-                New Haven–style pizza
+                New Haven style pizza
               </span>
             </div>
             <p
@@ -61,7 +61,7 @@ export default function Footer() {
                 maxWidth: '220px',
               }}
             >
-              Crisp, charred, sourdough crust. Fresh ingredients. A warm family-run place that treats every pie like a craft.
+              Sourdough crust, fresh ingredients, and a family behind every pie. Come hungry.
             </p>
             <div style={{ marginTop: '1.25rem' }}>
               <OpenStatusBadge dark />
@@ -131,7 +131,7 @@ export default function Footer() {
                   Closed Sun · Mon · Tue
                 </div>
                 <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.8125rem', marginTop: '0.4rem' }}>
-                  Fri eve: order ahead — may be busy!
+                  Fri eve: order ahead, it fills up fast
                 </div>
               </div>
             </div>
@@ -233,7 +233,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Third Proof Pizzeria · Pine Brook, NJ
           </p>
           <p style={{ fontSize: '0.8125rem', color: 'rgba(255,255,255,0.3)', margin: 0 }}>
-            New Haven&ndash;style sourdough pizza
+            New Haven style sourdough pizza
           </p>
         </div>
       </div>
