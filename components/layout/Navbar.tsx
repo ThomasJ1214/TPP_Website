@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import OpenStatusBadge from '@/components/ui/OpenStatusBadge';
@@ -15,6 +16,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -89,11 +91,24 @@ export default function Navbar() {
 
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="nav-link">
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="nav-link"
+                    aria-current={isActive ? 'page' : undefined}
+                    style={isActive ? {
+                      color: 'var(--color-brand-blue)',
+                      borderBottom: '2px solid var(--color-brand-blue)',
+                      paddingBottom: '2px',
+                    } : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               <OpenStatusBadge />
             </div>
 
@@ -196,12 +211,13 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
+                      aria-current={pathname === link.href ? 'page' : undefined}
                       style={{
                         display: 'block',
                         fontFamily: 'var(--font-display)',
                         fontSize: '1.5rem',
                         fontWeight: 700,
-                        color: 'var(--color-brand-text)',
+                        color: pathname === link.href ? 'var(--color-brand-blue)' : 'var(--color-brand-text)',
                         textDecoration: 'none',
                         padding: '0.5rem 0',
                         borderBottom: '1px solid var(--color-brand-border)',

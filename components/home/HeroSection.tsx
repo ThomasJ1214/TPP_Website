@@ -139,7 +139,7 @@ export default function HeroSection() {
             {[
               { value: '4.5★', label: 'Google Rating' },
               { value: 'Wed–Sat', label: '11 AM – 8 PM' },
-              { value: 'NJ\'s', label: 'Best New Haven Pie' },
+              { value: 'Pickup', label: 'Pine Brook, NJ' },
             ].map((stat) => (
               <div key={stat.label}>
                 <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.25rem', color: '#ffffff' }}>

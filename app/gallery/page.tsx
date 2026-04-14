@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import InstagramIcon from '@/components/ui/InstagramIcon';
+import { SITE } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Gallery',
@@ -11,13 +12,11 @@ export const metadata: Metadata = {
 // 📸 IMAGES: /public/images/gallery/gallery-*.jpg
 // Provide 9–12 photos: mix of whole pies, slices, kitchen action, dining room
 // Dimensions: 1200×800px for landscape, 800×1000px for portrait
-// Replace the placeholder items array with real image data when photos are available:
+// When photos are ready, replace this page's content with an image grid:
 // const photos = [
 //   { src: '/images/gallery/gallery-1.jpg', alt: 'New Haven pie fresh from the oven', width: 1200, height: 800 },
 //   ...
 // ]
-
-const placeholders = Array.from({ length: 9 }, (_, i) => ({ id: i + 1 }));
 
 export default function GalleryPage() {
   return (
@@ -48,99 +47,65 @@ export default function GalleryPage() {
         </p>
       </div>
 
-      {/* Photo grid */}
+      {/* Coming soon + Instagram prompt */}
       <div
         style={{
-          padding: '2.5rem 1.25rem',
-          maxWidth: '1200px',
+          maxWidth: '640px',
           margin: '0 auto',
+          padding: '5rem 1.25rem',
+          textAlign: 'center',
         }}
       >
+        {/* Instagram icon */}
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-            gap: '1rem',
+            width: '64px',
+            height: '64px',
+            borderRadius: '16px',
+            backgroundColor: 'var(--color-brand-blue-light)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto 1.5rem',
           }}
         >
-          {placeholders.map((p) => (
-            <div
-              key={p.id}
-              style={{
-                aspectRatio: p.id % 5 === 0 ? '4/3' : '1',
-                backgroundColor: p.id % 3 === 0 ? '#2D1F10' : p.id % 3 === 1 ? '#1A2D4E' : '#3D2E1E',
-                borderRadius: '0.75rem',
-                overflow: 'hidden',
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              {/*
-                📸 Replace each placeholder with:
-                <Image
-                  src={`/images/gallery/gallery-${p.id}.jpg`}
-                  alt="Third Proof Pizzeria"
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                />
-              */}
-              <p
-                style={{
-                  fontSize: '0.75rem',
-                  color: 'rgba(255,255,255,0.3)',
-                  fontFamily: 'var(--font-body)',
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  textAlign: 'center',
-                  padding: '1rem',
-                }}
-              >
-                Photo {p.id}<br />
-                <span style={{ fontSize: '0.6875rem' }}>coming soon</span>
-              </p>
-            </div>
-          ))}
+          <InstagramIcon size={28} style={{ color: 'var(--color-brand-blue)' }} />
         </div>
 
-        {/* Instagram prompt */}
-        <div
+        <h2
           style={{
-            marginTop: '3rem',
-            textAlign: 'center',
-            padding: '2.5rem',
-            backgroundColor: 'var(--color-brand-warm)',
-            borderRadius: '1rem',
-            border: '1px solid var(--color-brand-border)',
+            fontFamily: 'var(--font-display)',
+            fontWeight: 700,
+            fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+            color: 'var(--color-brand-text)',
+            lineHeight: 1.2,
+            marginBottom: '0.875rem',
           }}
         >
-          <InstagramIcon size={28} style={{ color: 'var(--color-brand-blue)', margin: '0 auto 0.75rem' }} />
-          <h2
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontWeight: 700,
-              fontSize: '1.25rem',
-              color: 'var(--color-brand-text)',
-              marginBottom: '0.5rem',
-            }}
-          >
-            See it fresh on Instagram
-          </h2>
-          <p style={{ fontSize: '0.9375rem', color: 'var(--color-brand-muted)', marginBottom: '1.25rem' }}>
-            We post daily specials, fresh pies, and behind-the-scenes moments.
-          </p>
-          <a
-            href="https://www.instagram.com/thirdproof"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline"
-          >
-            <InstagramIcon size={15} />
-            Follow @thirdproof
-          </a>
-        </div>
+          Photos coming soon.
+        </h2>
+
+        <p
+          style={{
+            fontSize: '1rem',
+            color: 'var(--color-brand-muted)',
+            lineHeight: 1.65,
+            maxWidth: '440px',
+            margin: '0 auto 2rem',
+          }}
+        >
+          We&apos;re putting the finishing touches on the gallery. In the meantime, follow us on Instagram for fresh pies, daily specials, and behind-the-scenes moments.
+        </p>
+
+        <a
+          href={SITE.instagram.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary"
+        >
+          <InstagramIcon size={16} />
+          Follow {SITE.instagram.handle}
+        </a>
       </div>
     </div>
   );

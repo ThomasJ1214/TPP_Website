@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { MapPin, Phone, Clock, ExternalLink } from 'lucide-react';
 import OpenStatusBadge from '@/components/ui/OpenStatusBadge';
 import InstagramIcon from '@/components/ui/InstagramIcon';
+import FooterNewsletterForm from '@/components/ui/FooterNewsletterForm';
 import { SITE } from '@/lib/config';
 
 export default function Footer() {
@@ -66,6 +67,7 @@ export default function Footer() {
             <div style={{ marginTop: '1.25rem' }}>
               <OpenStatusBadge dark />
             </div>
+            <FooterNewsletterForm />
           </div>
 
           {/* Visit column */}

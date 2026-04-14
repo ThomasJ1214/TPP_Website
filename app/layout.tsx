@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import PageLoader from '@/components/ui/PageLoader';
 import SmoothScroll from '@/components/ui/SmoothScroll';
 import NewsletterPopup from '@/components/ui/NewsletterPopup';
+import StickyOrderBar from '@/components/ui/StickyOrderBar';
 import { SITE } from '@/lib/config';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://thirdproofpizzeria.com';
@@ -119,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="flex-1 pt-[72px]">{children}</main>
         <Footer />
+        <StickyOrderBar />
         <Analytics />
       </body>
     </html>
