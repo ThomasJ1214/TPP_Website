@@ -36,6 +36,7 @@ export default function MenuPage() {
       {/* Sticky section nav */}
       <nav
         aria-label="Menu sections"
+        className="menu-section-nav"
         style={{
           position: 'sticky',
           top: '72px',

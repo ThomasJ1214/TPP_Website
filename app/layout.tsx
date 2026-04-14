@@ -118,7 +118,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <PageLoader />
         <NewsletterPopup />
         <Navbar />
-        <main className="flex-1 pt-[72px]">{children}</main>
+        <main className="flex-1 pt-[72px] pb-[76px] md:pb-0">{children}</main>
         <Footer />
         <StickyOrderBar />
         <Analytics />

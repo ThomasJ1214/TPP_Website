@@ -7,12 +7,25 @@ import { SITE } from '@/lib/config';
 
 export default function StickyOrderBar() {
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Only show on mobile — use matchMedia so it survives resizing
+    const mq = window.matchMedia('(max-width: 767px)');
+    const updateMobile = () => setIsMobile(mq.matches);
+    updateMobile();
+    mq.addEventListener('change', updateMobile);
+
     const onScroll = () => setVisible(window.scrollY > 200);
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+
+    return () => {
+      mq.removeEventListener('change', updateMobile);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
+
+  if (!isMobile) return null;
 
   return (
     <AnimatePresence>
@@ -22,7 +35,6 @@ export default function StickyOrderBar() {
           animate={{ y: 0 }}
           exit={{ y: '100%' }}
           transition={{ type: 'spring', stiffness: 400, damping: 40 }}
-          className="md:hidden"
           style={{
             position: 'fixed',
             bottom: 0,
@@ -30,11 +42,11 @@ export default function StickyOrderBar() {
             right: 0,
             zIndex: 40,
             backgroundColor: 'var(--color-brand-blue)',
-            padding: '0.875rem 1.25rem',
+            padding: '0.75rem 1rem',
             display: 'flex',
-            gap: '0.75rem',
+            gap: '0.625rem',
             alignItems: 'center',
-            boxShadow: '0 -4px 20px rgba(26,18,9,0.15)',
+            boxShadow: '0 -4px 20px rgba(26,18,9,0.18)',
           }}
         >
           <a
@@ -43,10 +55,10 @@ export default function StickyOrderBar() {
             rel="noopener noreferrer"
             style={{
               flex: 1,
-              display: 'inline-flex',
+              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '0.5rem',
+              gap: '0.4rem',
               padding: '0.75rem 1rem',
               backgroundColor: '#ffffff',
               color: 'var(--color-brand-blue)',
@@ -58,15 +70,15 @@ export default function StickyOrderBar() {
             }}
           >
             Order Online
-            <ExternalLink size={15} />
+            <ExternalLink size={14} />
           </a>
           <a
             href={SITE.phone.href}
             style={{
-              display: 'inline-flex',
+              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '0.75rem 1rem',
+              padding: '0.75rem 1.125rem',
               backgroundColor: 'rgba(255,255,255,0.12)',
               color: '#ffffff',
               fontWeight: 600,

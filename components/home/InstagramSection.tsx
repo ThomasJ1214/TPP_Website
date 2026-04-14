@@ -46,15 +46,14 @@ export default function InstagramSection() {
           </a>
         </div>
 
-        {/* Photo grid */}
+        {/* Photo grid — 2 cols on mobile, 3 on sm+ */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
+          className="grid grid-cols-2 sm:grid-cols-3"
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '0.625rem',
             borderRadius: '1rem',
             overflow: 'hidden',

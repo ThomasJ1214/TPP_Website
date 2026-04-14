@@ -68,11 +68,11 @@ export default function Navbar() {
                 className="group-hover:scale-105"
               >
                 {/* 📸 LOGO: Replace this div with <Image src="/images/logo/logo.png" alt="Third Proof Pizzeria" width={40} height={40} className="rounded-full" /> */}
-                <span style={{ color: '#fff', fontWeight: 700, fontSize: '1rem', fontFamily: 'var(--font-playfair)' }}>TP</span>
+                <span style={{ color: '#fff', fontWeight: 700, fontSize: '1rem', fontFamily: 'var(--font-display)' }}>TP</span>
               </div>
               <span
                 style={{
-                  fontFamily: 'var(--font-playfair)',
+                  fontFamily: 'var(--font-display)',
                   fontWeight: 700,
                   fontSize: '1.125rem',
                   color: 'var(--color-brand-text)',
@@ -99,11 +99,6 @@ export default function Navbar() {
                     href={link.href}
                     className="nav-link"
                     aria-current={isActive ? 'page' : undefined}
-                    style={isActive ? {
-                      color: 'var(--color-brand-blue)',
-                      borderBottom: '2px solid var(--color-brand-blue)',
-                      paddingBottom: '2px',
-                    } : undefined}
                   >
                     {link.label}
                   </Link>
