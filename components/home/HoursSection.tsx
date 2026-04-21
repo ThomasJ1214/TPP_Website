@@ -1,14 +1,35 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, Phone } from 'lucide-react';
 import { HOURS_DISPLAY } from '@/lib/hours';
 import OpenStatusBadge from '@/components/ui/OpenStatusBadge';
 import { SITE } from '@/lib/config';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function HoursSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.hours-col', {
+        y: 44,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power4.out',
+        stagger: 0.15,
+        scrollTrigger: { trigger: '.hours-col', start: 'top 82%' },
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className="section-padding"
       style={{ backgroundColor: 'var(--color-brand-cream)' }}
       aria-labelledby="hours-heading"
@@ -23,12 +44,7 @@ export default function HoursSection() {
           }}
         >
           {/* Hours table */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <div className="hours-col">
             <span className="section-label">When to visit</span>
             <h2 className="section-title" id="hours-heading" style={{ marginBottom: '1.5rem' }}>
               Hours &amp; Location
@@ -92,16 +108,10 @@ export default function HoursSection() {
                 );
               })}
             </div>
-          </motion.div>
+          </div>
 
           {/* Address & contact */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
-          >
+          <div className="hours-col" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div
               className="card"
               style={{ padding: '1.5rem' }}
@@ -184,7 +194,7 @@ export default function HoursSection() {
             >
               <strong>Friday tip:</strong> Evenings get busy and waits can stretch an hour. Order ahead online to skip the line.
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

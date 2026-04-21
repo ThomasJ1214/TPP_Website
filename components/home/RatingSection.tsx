@@ -1,9 +1,13 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Star, ExternalLink } from 'lucide-react';
 import type { Testimonial } from '@/types';
 import { SITE } from '@/lib/config';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const testimonials: Testimonial[] = [
   {
@@ -28,17 +32,14 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-function StarRating({ rating, size = 16 }: { rating: number; size?: number }) {
+function Stars({ rating }: { rating: number }) {
   return (
-    <div style={{ display: 'flex', gap: '2px' }} aria-label={`${rating} out of 5 stars`}>
+    <div style={{ display: 'flex', gap: '3px' }} aria-label={`${rating} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          size={size}
-          style={{
-            color: i < rating ? '#F59E0B' : '#E5DDD3',
-            fill: i < rating ? '#F59E0B' : 'none',
-          }}
+          size={14}
+          style={{ color: '#F59E0B', fill: i < rating ? '#F59E0B' : 'none' }}
           aria-hidden
         />
       ))}
@@ -46,57 +47,99 @@ function StarRating({ rating, size = 16 }: { rating: number; size?: number }) {
   );
 }
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
-};
-
 export default function RatingSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.rating-header', {
+        y: 44,
+        opacity: 0,
+        duration: 0.85,
+        ease: 'power4.out',
+        scrollTrigger: { trigger: '.rating-header', start: 'top 82%' },
+      });
+
+      gsap.from('.rating-card', {
+        y: 48,
+        opacity: 0,
+        duration: 0.7,
+        ease: 'power4.out',
+        stagger: 0.1,
+        scrollTrigger: { trigger: '.rating-card', start: 'top 80%' },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className="section-padding"
-      style={{ backgroundColor: 'var(--color-brand-warm)' }}
+      style={{
+        backgroundColor: 'var(--color-brand-warm)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
       aria-labelledby="reviews-heading"
     >
-      <div className="container-max">
+      {/* Decorative large quote */}
+      <div
+        aria-hidden
+        style={{
+          position: 'absolute',
+          top: '3rem',
+          right: '3rem',
+          fontFamily: 'Georgia, serif',
+          fontSize: 'clamp(8rem, 15vw, 14rem)',
+          lineHeight: 1,
+          color: 'rgba(26,18,9,0.04)',
+          userSelect: 'none',
+          pointerEvents: 'none',
+        }}
+      >
+        &ldquo;
+      </div>
+
+      <div className="container-max" style={{ position: 'relative', zIndex: 1 }}>
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+        <div className="rating-header" style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <span className="section-label">What People Are Saying</span>
-          <h2 className="section-title" id="reviews-heading">
+          <h2 className="section-title" id="reviews-heading" style={{ marginBottom: '1.5rem' }}>
             People love it here.
           </h2>
 
-          {/* Aggregate rating */}
+          {/* Aggregate rating pill */}
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.75rem',
-              marginTop: '1.25rem',
-              padding: '0.75rem 1.5rem',
+              gap: '0.875rem',
+              padding: '0.875rem 1.75rem',
               backgroundColor: '#ffffff',
-              border: '1px solid var(--color-brand-border)',
-              borderRadius: '2rem',
-              boxShadow: '0 2px 8px rgba(26,18,9,0.06)',
+              border: '1px solid rgba(229,221,211,0.9)',
+              borderRadius: '9999px',
+              boxShadow: 'var(--shadow-md)',
             }}
           >
-            <StarRating rating={5} size={18} />
+            <div style={{ display: 'flex', gap: '2px' }}>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} size={16} style={{ color: '#F59E0B', fill: '#F59E0B' }} aria-hidden />
+              ))}
+            </div>
             <span
               style={{
                 fontFamily: 'var(--font-display)',
                 fontWeight: 700,
                 fontSize: '1.125rem',
                 color: 'var(--color-brand-text)',
+                letterSpacing: '-0.02em',
               }}
             >
               4.5
             </span>
-            <span style={{ color: 'var(--color-brand-border)', fontSize: '1rem' }}>·</span>
+            <span style={{ width: '1px', height: '16px', backgroundColor: 'var(--color-brand-border)' }} />
             <a
               href={SITE.address.reviewsUrl}
               target="_blank"
@@ -111,43 +154,40 @@ export default function RatingSection() {
                 fontWeight: 500,
               }}
             >
-              See all Google reviews
+              Google Reviews
               <ExternalLink size={12} />
             </a>
           </div>
         </div>
 
-        {/* Testimonial cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
+        {/* Testimonial grid */}
+        <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '1.25rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(268px, 1fr))',
+            gap: '1.375rem',
           }}
         >
           {testimonials.map((t) => (
-            <motion.div
+            <div
               key={t.name}
-              variants={cardVariants}
-              className="card"
-              style={{ padding: '1.5rem' }}
+              className="rating-card card"
+              style={{ padding: '1.875rem', position: 'relative' }}
             >
-              <StarRating rating={t.rating} />
-              <div style={{ position: 'relative', paddingTop: '1.5rem', marginBottom: '1.125rem' }}>
+              <Stars rating={t.rating} />
+
+              {/* Quote */}
+              <div style={{ position: 'relative', marginTop: '1.25rem', marginBottom: '1.375rem' }}>
                 <span
                   aria-hidden
                   style={{
                     position: 'absolute',
-                    top: '-0.125rem',
-                    left: '-0.25rem',
+                    top: '-0.5rem',
+                    left: '-0.375rem',
                     fontFamily: 'Georgia, serif',
-                    fontSize: '3rem',
+                    fontSize: '3.5rem',
                     lineHeight: 1,
-                    color: 'var(--color-brand-border)',
+                    color: 'var(--color-brand-blue-light)',
                     userSelect: 'none',
                     pointerEvents: 'none',
                   }}
@@ -157,30 +197,34 @@ export default function RatingSection() {
                 <p
                   style={{
                     margin: 0,
+                    paddingTop: '1.5rem',
                     fontSize: '0.9375rem',
                     color: 'var(--color-brand-text)',
-                    lineHeight: 1.65,
+                    lineHeight: 1.7,
                     fontStyle: 'italic',
                   }}
                 >
                   {t.text}
                 </p>
               </div>
+
+              {/* Author */}
               <div
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.625rem',
-                  paddingTop: '0.875rem',
+                  gap: '0.75rem',
+                  paddingTop: '1rem',
                   borderTop: '1px solid var(--color-brand-border)',
                 }}
               >
                 <div
                   style={{
-                    width: '32px',
-                    height: '32px',
+                    width: '36px',
+                    height: '36px',
                     borderRadius: '50%',
-                    backgroundColor: 'var(--color-brand-blue-light)',
+                    background: 'linear-gradient(135deg, var(--color-brand-blue-light), rgba(219,234,254,0.4))',
+                    border: '1px solid rgba(30,64,175,0.15)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -194,17 +238,17 @@ export default function RatingSection() {
                   {t.name[0]}
                 </div>
                 <div>
-                  <div style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--color-brand-text)' }}>
+                  <div style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--color-brand-text)', lineHeight: 1.2 }}>
                     {t.name}
                   </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--color-brand-muted)' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--color-brand-muted)', letterSpacing: '0.02em', marginTop: '0.125rem' }}>
                     Google Review
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

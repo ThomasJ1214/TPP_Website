@@ -35,10 +35,11 @@ export default function Navbar() {
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          backgroundColor: scrolled ? 'rgba(250, 247, 242, 0.97)' : 'rgba(250, 247, 242, 0.85)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: scrolled ? '1px solid var(--color-brand-border)' : '1px solid transparent',
-          boxShadow: scrolled ? '0 2px 12px rgba(26,18,9,0.08)' : 'none',
+          backgroundColor: scrolled ? 'rgba(250, 247, 242, 0.97)' : 'rgba(250, 247, 242, 0.0)',
+          backdropFilter: scrolled ? 'blur(14px) saturate(1.4)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(229,221,211,0.6)' : '1px solid transparent',
+          boxShadow: scrolled ? 'var(--shadow-md)' : 'none',
+          transition: 'background-color 400ms ease, border-color 400ms ease, box-shadow 400ms ease, backdrop-filter 400ms ease',
         }}
       >
         <div
@@ -55,20 +56,21 @@ export default function Navbar() {
               {/* Logo image — replace with actual logo when provided */}
               <div
                 style={{
-                  width: '40px',
-                  height: '40px',
+                  width: '42px',
+                  height: '42px',
                   borderRadius: '50%',
-                  backgroundColor: 'var(--color-brand-blue)',
+                  background: 'linear-gradient(145deg, #2B52C8 0%, var(--color-brand-blue-dark) 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexShrink: 0,
-                  transition: 'transform 200ms ease',
+                  boxShadow: '0 2px 8px rgba(30,64,175,0.3)',
+                  transition: 'transform 250ms var(--ease-expo), box-shadow 250ms ease',
                 }}
                 className="group-hover:scale-105"
               >
-                {/* 📸 LOGO: Replace this div with <Image src="/images/logo/logo.png" alt="Third Proof Pizzeria" width={40} height={40} className="rounded-full" /> */}
-                <span style={{ color: '#fff', fontWeight: 700, fontSize: '1rem', fontFamily: 'var(--font-display)' }}>TP</span>
+                {/* 📸 LOGO: Replace with <Image src="/images/logo/logo.png" alt="Third Proof Pizzeria" width={42} height={42} className="rounded-full" /> */}
+                <span style={{ color: '#fff', fontWeight: 700, fontSize: '1rem', fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>TP</span>
               </div>
               <span
                 style={{
@@ -112,7 +114,7 @@ export default function Navbar() {
               <Link
                 href="/order"
                 className="btn-primary"
-                style={{ padding: '0.5625rem 1.25rem', fontSize: '0.875rem' }}
+                style={{ padding: '0.5625rem 1.375rem', fontSize: '0.8125rem', letterSpacing: '0.04em', borderRadius: '9999px' }}
               >
                 Order Online
               </Link>
